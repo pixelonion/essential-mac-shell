@@ -22,6 +22,9 @@ export EDITOR=/usr/bin/vim
 # ------------------------------------------------------------
 export BLOCKSIZE=1k
 
+# Homebrew for M1
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Homebrew github
 # 1. Visit https://github.com/settings/tokens/new
 # 2. Fill in “Homebrew” in the Note field, change expiration to No expiration,
@@ -31,6 +34,26 @@ export HOMEBREW_GITHUB_API_TOKEN=""
 
 # Drush launcher fallback.
 export DRUSH_LAUNCHER_FALLBACK=$HOME/.composer/vendor/bin/drush
+
+# Prevent brew autoupgrade when installing new package.
+export HOMEBREW_NO_INSTALL_UPGRADE=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# node@14
+#export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+#export LDFLAGS="-L/opt/homebrew/opt/node@14/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/node@14/include"
+
+# pyenv
+export PATH="$(pyenv root)/shims:${PATH}"
+
+# bindkey to emacs
+bindkey -e
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # -------------------------------
 # 2.  SET ALIASES
@@ -70,3 +93,7 @@ source "$HOME/.console/console.rc" 2>/dev/null
 
 # Set unlimited memory limit for composer
 export COMPOSER_MEMORY_LIMIT=-1
+
+# Node issue related to OpenSSL version
+# @see https://stackoverflow.com/questions/75959563/node-js-err-ossl-evp-unsupported-error-when-running-npm-run-start
+export NODE_OPTIONS=--openssl-legacy-provider
