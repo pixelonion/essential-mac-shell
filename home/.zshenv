@@ -45,7 +45,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #export CPPFLAGS="-I/opt/homebrew/opt/node@14/include"
 
 # pyenv
-export PATH="$(pyenv root)/shims:${PATH}"
+[ -s "/opt/homebrew/bin/pyenv" ] && export PATH="$(pyenv root)/shims:${PATH}"
 
 # bindkey to emacs
 bindkey -e
